@@ -1,13 +1,29 @@
-{% extends "layout.html" %}
-{% block body %}
-</body>
+{% extends "layout.html" %} {% block body %}
+<div class="lampSlider">
+  <div>
+    <label for="strengthSlider">Strength:</label>
+  </div>
+  <span id="strengthValue">1</span>
 
-<div>
-    <div class="optionSound">
-        <h3 class="optionTitle"></h3>
-        
-    </div>
+  <input
+    type="range"
+    id="strengthSlider"
+    name="strength"
+    min="1"
+    max="7"
+    value="1"
+    oninput="updateStrengthValue(this.value)"
+    style="cursor: pointer;"
+  />
+
+  <button class="letThereBelight">
+    Let there be light!
+  </button>
 </div>
-</html>
 
+<script>
+  function updateStrengthValue(value) {
+    document.getElementById("strengthValue").innerText = value;
+  }
+</script>
 {% endblock %}
