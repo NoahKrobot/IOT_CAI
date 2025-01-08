@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "firebase": "^11.1.0"
+    "firebase": "^11.1.0",
+    "sonner": "^1.7.1"
   }
 }

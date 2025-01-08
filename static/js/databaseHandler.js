@@ -1,17 +1,32 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyCYArcypqqY73wFtwGrzlegjyhkhRiuzuM",
   authDomain: "lightbook-24211.firebaseapp.com",
   projectId: "lightbook-24211",
-  storageBucket: "lightbook-24211.firebasestorage.app",
+  storageBucket: "lightbook-24211.appspot.com",
   messagingSenderId: "245779430190",
-  appId: "1:245779430190:web:bdb631444719512e1b58bf"
+  appId: "1:245779430190:web:bdb631444719512e1b58bf",
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const db = getFirestore(app); 
+
+document.getElementById("letThereBeLightButton").onclick = async function () {
+  const strength = document.getElementById("strengthSlider").value;
+  const time = new Date().toISOString();
+    const strengthCollection = collection(db, "pushed_strength");
+
+  const formData = {
+    strength: strength,
+    time: time,
+  };
+
+  try {
+    await addDoc(strengthCollection, formData);
+    console.log("to firebase:", formData);
+  } catch (e) {
+    console.error('err:',e);
+  }
+};
