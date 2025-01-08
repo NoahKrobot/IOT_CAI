@@ -6,17 +6,18 @@
   <span id="strengthValue">1</span>
 
   <input
-    type="range"
-    id="strengthSlider"
-    name="strength"
-    min="1"
-    max="7"
-    value="1"
-    oninput="updateStrengthValue(this.value)"
-    style="cursor: pointer;"
-  />
+  type="range"
+  id="strengthSlider"
+  name="strength"
+  min="1"
+  max="7"
+  value="1"
+  oninput="updateStrengthValue(this.value);"
+  style="cursor: pointer;"
+/>
 
-  <button class="letThereBelight">
+
+  <button class="letThereBelight" onclick="setupPubNub()">
     Let there be light!
   </button>
 </div>
