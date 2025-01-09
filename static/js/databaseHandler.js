@@ -12,8 +12,15 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app); 
 
-document.getElementById("letThereBeLightButton").onclick = async function () {
 
+document.getElementById("turnOff").onclick = async function () {
+  setupPubNub(true)
+  document.getElementById("turnOff").style.display='none'
+
+}
+
+document.getElementById("letThereBeLightButton").onclick = async function () {
+  document.getElementById("turnOff").style.display='block'
   setupPubNub(false)
   const strength = document.getElementById("strengthSlider").value;
   const time = new Date().toISOString();
