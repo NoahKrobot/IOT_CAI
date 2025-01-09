@@ -1,6 +1,6 @@
 let pubnub;
 
-async function setupPubNub() {
+async function setupPubNub(turnOff) {
   console.log('test')
   const strengthValue = document.getElementById("strengthSlider").value;
 
@@ -11,11 +11,21 @@ async function setupPubNub() {
     userId: "noah_id",
   });
 
-  const messageStr = {                  
-    text: strengthValue,  
-    timestamp: new Date().toISOString(), 
-    turnOff: "no"
-  };
+  var messageStr
+  if(turnOff){
+     messageStr = {                  
+      text: strengthValue,  
+      timestamp: new Date().toISOString(), 
+      turnOff: "true"
+    };
+  }else{
+     messageStr = {                  
+      text: strengthValue,  
+      timestamp: new Date().toISOString(), 
+      turnOff: "false"
+    };
+  }
+
 
   // Publish the message
   pubnub.publish(

@@ -14,7 +14,7 @@ const db = getFirestore(app);
 
 document.getElementById("letThereBeLightButton").onclick = async function () {
 
-  setupPubNub()
+  setupPubNub(false)
   const strength = document.getElementById("strengthSlider").value;
   const time = new Date().toISOString();
     const strengthCollection = collection(db, "pushed_strength");
