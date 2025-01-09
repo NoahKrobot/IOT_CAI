@@ -14,7 +14,7 @@ async function setupPubNub() {
   const messageStr = {                  
     text: strengthValue,  
     timestamp: new Date().toISOString(), 
-    turnOff: "false"
+    turnOff: "no"
   };
 
   // Publish the message
