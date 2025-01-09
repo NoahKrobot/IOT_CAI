@@ -1,6 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
 import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
-
 const firebaseConfig = {
   apiKey: "AIzaSyCYArcypqqY73wFtwGrzlegjyhkhRiuzuM",
   authDomain: "lightbook-24211.firebaseapp.com",
@@ -14,6 +13,8 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app); 
 
 document.getElementById("letThereBeLightButton").onclick = async function () {
+
+  setupPubNub()
   const strength = document.getElementById("strengthSlider").value;
   const time = new Date().toISOString();
     const strengthCollection = collection(db, "pushed_strength");
