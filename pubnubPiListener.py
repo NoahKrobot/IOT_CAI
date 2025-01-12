@@ -22,17 +22,18 @@ led10 = LED(10)
 
 pnconfig = PNConfiguration()
 pnconfig.subscribe_key = "sub-c-a7c449e1-c9ca-484c-b992-2b146e8a0029"
-pnconfig.user_id = "test_user"
+pnconfig.user_id = "noahid"
 
 pubnub = PubNub(pnconfig)
+print("*** Listening ***")
 
-class MySubscribeCallback(SubscribeCallback):
+class ReceiveMsg(SubscribeCallback):
     def message(self, pubnub, message):
-        print(f"Received message: {message.message}")
+        # print(f"Message: {message.message}")
 
-        strengthPassed = message.message.get("text", "No text provided")
+        strengthPassed = message.message.get("text", "No text")
         strengthPassedInt = int(strengthPassed)
-        turnOffPassed = message.message.get("turnOff", "No turnoff provided")
+        turnOffPassed = message.message.get("turnOff", "No text")
         
         print(strengthPassed)
         print(strengthPassedInt)
@@ -103,8 +104,8 @@ class MySubscribeCallback(SubscribeCallback):
                 led27.off()
                 led22.off()
                 led10.off()
-pubnub.add_listener(MySubscribeCallback())
+pubnub.add_listener(ReceiveMsg())
 pubnub.subscribe().channels("strength_ch").execute()
 
-print("Listening")
+
 
